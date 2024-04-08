@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {currencyModel, ResponseDto} from "./models";
 import {environment} from "../environments/environment";
 import {firstValueFrom} from "rxjs";
 
+
+// @ts-ignore
 @Component({
   selector: 'app-root',
   template: `
@@ -47,7 +49,7 @@ import {firstValueFrom} from "rxjs";
       </ion-item>
         <ion-button (click)="convert()">Convert</ion-button>
 
-      <br><br><br><br><br>
+
     </ion-row>
     <ion-row>
 
@@ -55,6 +57,61 @@ import {firstValueFrom} from "rxjs";
 
 
     </ion-row>
+
+    <h1>History</h1>
+    <ion-row >
+      <ion-col style=" border: 2px solid #000;">
+        <h1>Date</h1>
+      </ion-col>
+
+      <ion-col style=" border: 2px solid #000;">
+        <h1>Source</h1>
+      </ion-col>
+
+      <ion-col style=" border: 2px solid #000;">
+        <h1>Target</h1>
+      </ion-col>
+
+      <ion-col style=" border: 2px solid #000;">
+        <h1>Value</h1>
+      </ion-col>
+
+      <ion-col style=" border: 2px solid #000;">
+        <h1>Result</h1>
+      </ion-col>
+
+
+
+    </ion-row>
+
+    <div *ngFor="let his of history">
+
+
+      <ion-row >
+        <ion-col style=" border: 2px solid #000;">
+          <h1>{{his.date}}</h1>
+        </ion-col>
+
+        <ion-col style=" border: 2px solid #000;">
+          <h1>{{his.source}}</h1>
+        </ion-col>
+
+        <ion-col style=" border: 2px solid #000;">
+          <h1>{{his.target}}</h1>
+        </ion-col>
+
+        <ion-col style=" border: 2px solid #000;">
+          <h1>{{his.value}}</h1>
+        </ion-col>
+
+        <ion-col style=" border: 2px solid #000;">
+          <h1>{{his.result}}</h1>
+        </ion-col>
+
+      </ion-row>
+
+    </div>
+
 
 
 
@@ -67,13 +124,16 @@ import {firstValueFrom} from "rxjs";
   `,
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   source: string="";
   target: string="";
   currencies: string[]=["USD","EUR","GBP","JPY","AUD"];
   value1: number=0;
   convertion: number=0;
+  history: currencyModel[]=[];
+
+
 
   constructor(private readonly http: HttpClient) {}
 
@@ -98,7 +158,27 @@ export class AppComponent {
     currencyModel=response.responseData;
     this.convertion=currencyModel.result;
 
+    this.getHistory();
 
 
   }
+
+  ngOnInit(): void {
+
+this.getHistory();
+
+
+  }
+
+
+  async getHistory()
+  {
+    var result= await firstValueFrom(this.http.get<ResponseDto<currencyModel[]>>(environment.baseUrl+ "/currency/get"))
+    this.history=result.responseData;
+
+   
+  }
+
+
+
 }
