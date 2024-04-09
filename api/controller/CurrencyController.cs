@@ -16,6 +16,8 @@ public class CurrencyController : Controller
         _currencyService = currencyService;
     }
 
+    
+    //Makes a ResponseDTO which contains a success message and the data from the service layer.
     [HttpGet]
     [Route("/currency/get")]
     public ResponseDto GetCurrencyHistory()
@@ -27,6 +29,7 @@ public class CurrencyController : Controller
         };
     }
 
+    //Makes a ResponseDto which contains a success message and the new data from the service layer.
     [HttpPost]
     [Route("/currency/post")]
     public ResponseDto PostCurrency([FromBody] CurrencyModel currencyModel)

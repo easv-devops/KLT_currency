@@ -13,6 +13,8 @@ public class CurrencyRepository
     {
         _dataSource = dataSource;
     }
+    
+    //Gets all the entries from the databases history table.
     public IEnumerable<CurrencyModel> GetCurrencyHistory()
     {
         var sql = @"SELECT * FROM History;";
@@ -23,6 +25,7 @@ public class CurrencyRepository
         }
     }
 
+    //Post a new entry in the databases history table.
     public CurrencyModel PostCurrency(CurrencyModel currencyModel)
     {
         var sql =

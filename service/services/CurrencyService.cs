@@ -7,12 +7,13 @@ namespace service.services;
 public class CurrencyService
 {
     private readonly CurrencyRepository _currencyRepository;
-
+    
     public CurrencyService(CurrencyRepository currencyRepository)
     {
         _currencyRepository = currencyRepository;
     }
     
+    //Get method which calls the method in the infrastructure.
     public IEnumerable<CurrencyModel> GetCurrencyHistory()
     {
         try
@@ -25,7 +26,7 @@ public class CurrencyService
             throw new ValidationException("Error in getting currency history");
         }
     } 
-
+    //Create method which uses the converter method before sending the it to the infrastructure.
     public CurrencyModel PostCurrency(CurrencyModel currencyModel)
     {
         try
@@ -42,6 +43,7 @@ public class CurrencyService
     
     static decimal ConvertCurrency(decimal amount, string fromCurrency, string toCurrency)
     {
+        //Library of usable currencies for conversion. 
         Dictionary<string, decimal> rates = new Dictionary<string, decimal>
         {
             {"USD", 1m},
@@ -51,6 +53,7 @@ public class CurrencyService
             {"AUD", 1.31m}
         };
         
+        //The logic behind how the conversion of value is calculated
         decimal rateToUSD = rates[fromCurrency];
         decimal amountInUSD = amount / rateToUSD;
         decimal targetRate = rates[toCurrency];
