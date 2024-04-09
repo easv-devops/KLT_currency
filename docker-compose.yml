@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  app-database:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: secret
+    ports:
+      - 5432:5432
+
+  flyway:
+    image: flyway/flyway:10
+    command: migrate
+    volumes:
+      - ./DBmigrations:/flyway/sql
+      - ./DBmigrations:/flyway/conf
+    depends_on:
+      - app-database
