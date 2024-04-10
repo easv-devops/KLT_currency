@@ -158,7 +158,7 @@ export class AppComponent implements OnInit{
     currencyModel=response.responseData;
     this.convertion=currencyModel.result;
 
-    this.getHistory();
+    //this.getHistory();
 
 
   }
@@ -176,7 +176,7 @@ this.getHistory();
     var result= await firstValueFrom(this.http.get<ResponseDto<currencyModel[]>>(environment.baseUrl+ "/currency/get"))
     this.history=result.responseData;
 
-   
+
   }
 
 

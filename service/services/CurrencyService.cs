@@ -31,7 +31,10 @@ public class CurrencyService
     {
         try
         {
-            currencyModel.result = ConvertCurrency(currencyModel.value, currencyModel.source, currencyModel.target);
+            currencyModel.Result = ConvertCurrency(currencyModel.Value, currencyModel.Source, currencyModel.Target);
+            Console.WriteLine(currencyModel.Result);
+            
+            
             return _currencyRepository.PostCurrency(currencyModel);
         }
         catch (Exception e)
@@ -53,7 +56,7 @@ public class CurrencyService
             {"AUD", 1.31m}
         };
         
-        //The logic behind how the conversion of value is calculated
+        //The logic behind how the conversion of Value is calculated
         decimal rateToUSD = rates[fromCurrency];
         decimal amountInUSD = amount / rateToUSD;
         decimal targetRate = rates[toCurrency];

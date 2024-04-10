@@ -17,7 +17,7 @@ public class CurrencyRepository
     //Gets all the entries from the databases history table.
     public IEnumerable<CurrencyModel> GetCurrencyHistory()
     {
-        var sql = @"SELECT * FROM History;";
+        var sql = @"SELECT * FROM history;";
 
         using (var conn = _dataSource.OpenConnection())
         {
@@ -28,16 +28,26 @@ public class CurrencyRepository
     //Post a new entry in the databases history table.
     public CurrencyModel PostCurrency(CurrencyModel currencyModel)
     {
+        Console.WriteLine(currencyModel.Date);
+        Console.WriteLine(currencyModel.Result);
+        Console.WriteLine(currencyModel.Source);
+        Console.WriteLine(currencyModel.Value);
+        Console.WriteLine(currencyModel.Target);
+        
         var sql =
-            @"INSERT INTO History (Date, Source, Target, Value, Result) VALUES (@date, @source, @target, @value, @result) RETURNING *;";
+            @"INSERT INTO history (""Date"", ""Source"", ""Target"", ""Value"", ""Result"") VALUES (@Date, @Source, @Target, @Value, @Result) RETURNING *;";
         using (var conn = _dataSource.OpenConnection())
         {
             return conn.QueryFirst<CurrencyModel>(sql,
                 new
                 {
-                    data = currencyModel.date, source = currencyModel.source, target = currencyModel.target,
-                    value = currencyModel.value, result = currencyModel.result
+                    Date = currencyModel.Date, // Corrected from data to Date
+                    Source = currencyModel.Source,
+                    Target = currencyModel.Target,
+                    Value = currencyModel.Value,
+                    Result = currencyModel.Result
                 });
         }
+
     }
 }

@@ -2,9 +2,9 @@
 
 public class CurrencyModel
 {
-    public DateTime date { get; set; }
-    public string source { get; set; }
-    public string target { get; set; }
-    public decimal value { get; set; }
-    public decimal result { get; set; } 
+    public DateTime Date { get; set; }
+    public string Source { get; set; }
+    public string Target { get; set; }
+    public decimal Value { get; set; }
+    public decimal Result { get; set; } 
 }
