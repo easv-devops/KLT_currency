@@ -16,7 +16,7 @@ services:
     image: flyway/flyway:10
     command: migrate
     volumes:
-      - ./DBmigrations:/flyway/sql
-      - ./DBmigrations:/flyway/conf
+      - ./DBMigrations:/flyway/sql
+      - ./DBMigrations:/flyway/conf
     depends_on:
       - app-database
