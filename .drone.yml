@@ -14,8 +14,5 @@ steps:
         /k:"easv-devops_KLT_currency_AY7HNVWNEVvRW2O60Elc"
         /d:sonar.host.url="http://sonar.setgo.dk:9000"
         /d:sonar.token="$SONARSECRET"
-        /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-        /d:sonar.qualitygate.wait=true
-      - dotnet build --no-incremental
-      - dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+      - dotnet build
       - dotnet sonarscanner end /d:sonar.token="$SONARSECRET"
