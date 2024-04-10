@@ -158,7 +158,7 @@ export class AppComponent implements OnInit{
     currencyModel=response.responseData;
     this.convertion=currencyModel.result;
 
-    //this.getHistory();
+    this.getHistory();
 
 
   }
