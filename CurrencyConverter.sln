@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service", "service\service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "infrastructure\infrastructure.csproj", "{21B641DD-FCE7-4E63-8DFD-DBCB0DCE335A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestCurrency", "UnitTestCurrency\UnitTestCurrency.csproj", "{360344A6-5553-4BFE-9C15-66C17F98A326}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{21B641DD-FCE7-4E63-8DFD-DBCB0DCE335A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21B641DD-FCE7-4E63-8DFD-DBCB0DCE335A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21B641DD-FCE7-4E63-8DFD-DBCB0DCE335A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360344A6-5553-4BFE-9C15-66C17F98A326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360344A6-5553-4BFE-9C15-66C17F98A326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360344A6-5553-4BFE-9C15-66C17F98A326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360344A6-5553-4BFE-9C15-66C17F98A326}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
