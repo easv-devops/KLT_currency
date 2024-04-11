@@ -20,3 +20,11 @@ services:
       - ./DBMigrations:/flyway/conf
     depends_on:
       - app-database
+        
+  frontend:
+    build:
+      context: Frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:80
+    
