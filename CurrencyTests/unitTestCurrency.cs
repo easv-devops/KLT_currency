@@ -13,14 +13,13 @@ public class UnitTestCurrency
     [SetUp]
     public void Setup()
     {
-        _currencyController = new CurrencyController(new CurrencyService(new CurrencyRepository(null, true)));
+        _currencyController = new CurrencyController(new CurrencyService(new CurrencyRepository(null)));
     }
 
     [Test]
     public void GetCurrencyTest()
     {
-        
-        var result = _currencyController.GetCurrencyHistory();
+        var result = _currencyController.GetCurrencyHistory(true);
         
         Assert.AreEqual("Successfully got all prior conversions of currency", result.MessageToClient);
     }

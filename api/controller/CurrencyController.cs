@@ -20,12 +20,12 @@ public class CurrencyController : Controller
     //Makes a ResponseDTO which contains a success message and the data from the service layer.
     [HttpGet]
     [Route("/currency/get")]
-    public ResponseDto GetCurrencyHistory()
+    public ResponseDto GetCurrencyHistory(bool testing)
     {
         return new ResponseDto()
         {
             MessageToClient = "Successfully got all prior conversions of currency",
-            ResponseData = _currencyService.GetCurrencyHistory()
+            ResponseData = _currencyService.GetCurrencyHistory(testing)
         };
     }
 

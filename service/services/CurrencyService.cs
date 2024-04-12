@@ -14,11 +14,11 @@ public class CurrencyService
     }
     
     //Get method which calls the method in the infrastructure.
-    public IEnumerable<CurrencyModel> GetCurrencyHistory()
+    public IEnumerable<CurrencyModel> GetCurrencyHistory(bool testing)
     {
         try
         {
-            return _currencyRepository.GetCurrencyHistory();
+            return _currencyRepository.GetCurrencyHistory(testing);
         }
         catch (Exception e)
         {
