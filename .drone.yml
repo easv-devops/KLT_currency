@@ -68,7 +68,7 @@ steps:
     image: flyway/flyway
     commands:
       - flyway migrate
-        -url=jdbc:postgresql://144.91.64.53:3306/postgres
+        -url=jdbc:postgresql://144.91.64.53:5432/postgres
         -password=secret
         -locations=filesystem:./db/data
     depends_on:
