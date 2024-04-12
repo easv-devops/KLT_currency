@@ -5,6 +5,7 @@ services:
     image: postgres
     restart: always
     shm_size: 128mb
+    hostname: app-database
     volumes:
       - ./db/data:/var/lib/postgresql/data
     environment:
@@ -27,4 +28,15 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 8080:80
-    
+    depends_on: 
+      - api
+  
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - 5100:8080
+    hostname: api
+    depends_on: 
+      - app-database

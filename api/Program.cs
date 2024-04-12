@@ -7,13 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 if (builder.Environment.IsDevelopment())
 {
-    builder.Services.AddNpgsqlDataSource(Utilities.connectionString,
+    builder.Services.AddNpgsqlDataSource(Utilities.connectionStringDev,
         dataSourceBuilder => dataSourceBuilder.EnableParameterLogging());
 }
 
 if (builder.Environment.IsProduction())
 {
-    builder.Services.AddNpgsqlDataSource(Utilities.connectionString);
+    builder.Services.AddNpgsqlDataSource(Utilities.connectionStringProd);
 }
 
 builder.Services.AddSingleton<CurrencyService>();
