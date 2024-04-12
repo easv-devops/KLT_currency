@@ -26,6 +26,8 @@ services:
       - 8081:80
     depends_on:
       - api
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
   
   api:
     image: hoeeg79/currency-converter-exercise-api:staging
@@ -36,6 +38,8 @@ services:
     hostname: api
     depends_on:
       - app-database
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
   
   watchtower:
     image: containrrr/watchtower
