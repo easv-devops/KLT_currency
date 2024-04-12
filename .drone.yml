@@ -9,7 +9,6 @@ steps:
       SONARSECRET:
         from_secret: SonarQubeSecret
     commands:
-      - exit 0
       - dotnet sonarscanner begin
         /k:"easv-devops_KLT_currency_AY7HNVWNEVvRW2O60Elc"
         /d:sonar.host.url="http://sonar.setgo.dk:9000"
