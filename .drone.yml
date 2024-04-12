@@ -71,7 +71,7 @@ steps:
         -url=jdbc:postgresql://144.91.64.53:5432/postgres
         -user=postgres
         -password=secret
-        -locations=filesystem:./db/data
+        -locations=filesystem:./db
     depends_on:
       - trigger update
 
