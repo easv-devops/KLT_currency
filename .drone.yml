@@ -62,7 +62,7 @@ steps:
       - sleep 10
     depends_on:
       - publish api
-      - publish web
+      - publish frontend
 
   - name: update database
     image: flyway/flyway
