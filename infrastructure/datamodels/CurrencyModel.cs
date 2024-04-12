@@ -7,4 +7,5 @@ public class CurrencyModel
     public string Target { get; set; }
     public decimal Value { get; set; }
     public decimal Result { get; set; } 
+    public bool Testing { get; set; }
 }

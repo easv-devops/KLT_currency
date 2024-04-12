@@ -1,5 +1,6 @@
 using infrastructure;
 using infrastructure.repositories;
+using Npgsql;
 using service.services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,12 @@ if (builder.Environment.IsProduction())
 }
 
 builder.Services.AddSingleton<CurrencyService>();
-builder.Services.AddSingleton<CurrencyRepository>();
+builder.Services.AddSingleton<CurrencyRepository>(provider =>
+{
+    var dataSource = provider.GetRequiredService<NpgsqlDataSource>();
+    var testing = false;
+    return new CurrencyRepository(dataSource, testing);
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
