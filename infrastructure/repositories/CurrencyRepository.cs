@@ -13,6 +13,10 @@ public class CurrencyRepository
     {
         _dataSource = dataSource;
         list = new List<CurrencyModel>();
+        CurrencyModel model1 = new CurrencyModel { Date = DateTime.Today, Source = "EUR", Target = "USD", Value = 30, Result = 25, Testing = true};
+        CurrencyModel model2 = new CurrencyModel { Date = DateTime.Today, Source = "USD", Target = "EUR", Value = 40, Result = 20, Testing = true};
+        list.Add(model1);
+        list.Add(model2);
     }
     
     //Gets all the entries from the databases history table.
@@ -21,17 +25,11 @@ public class CurrencyRepository
         var sql = @"SELECT * FROM history;";
         if (testing)
         {
-            CurrencyModel model1 = new CurrencyModel { Date = DateTime.Today, Source = "EUR", Target = "USD", Value = 30, Result = 25, Testing = true};
-            CurrencyModel model2 = new CurrencyModel { Date = DateTime.Today, Source = "USD", Target = "EUR", Value = 40, Result = 20, Testing = true};
-            list.Add(model1);
-            list.Add(model2);
             foreach (var item in list)
             {
                 yield return item;
             }
-        }
-        else
-        {
+        } else {
             using (var conn = _dataSource.OpenConnection())
             { 
                 foreach (var item in conn.Query<CurrencyModel>(sql))
