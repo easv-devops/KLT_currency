@@ -49,8 +49,8 @@ steps:
         from_secret: DockerUsername
       password:
         from_secret: DockerPassword
-      context: .
-      dockerfile: Frontend/Dockerfile
+      context: Frontend
+      dockerfile: ./Dockerfile
       repo: hoeeg79/currency-converter-exercise-frontend
       tags:
         - staging
