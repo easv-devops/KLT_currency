@@ -81,3 +81,58 @@ steps:
       - testcafe chromium:headless test/e2e/count-forecasts.js
     depends_on:
       - update database
+        
+---
+
+kind: pipeline
+type: docker
+name: deploy
+depends_on:
+  - deliver
+
+steps: # IMPORTANT: Allow Drone to run the first two steps 
+  - name: release api
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: .
+      dockerfile: api/Dockerfile
+      repo: hoeeg79/currency-converter-exercise-api
+      tags:
+        - prod
+
+  - name: release frontend
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: Frontend
+      dockerfile: Frontend/Dockerfile
+      repo: hoeeg79/currency-converter-exercise-frontend
+      tags:
+        - prod
+
+  - name: trigger update
+    image: curlimages/curl
+    commands:
+      - "curl -X GET 'http://144.91.74.225:8080/v1/update' -H 'Authorization: Bearer mytoken'" # Must match the token defined in docker-compose.yml
+      - sleep 10
+    depends_on:
+      - release api
+      - release frontend
+
+  - name: update database
+    image: flyway/flyway
+    commands:
+      - flyway migrate
+        -url=jdbc:postgresql://144.91.74.225:5432/postgres
+        -user=postgres
+        -password=secret
+        -locations=filesystem:./DBMigrations
+    depends_on:
+      - trigger update
