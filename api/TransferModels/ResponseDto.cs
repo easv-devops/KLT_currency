@@ -1,4 +1,6 @@
-﻿namespace api.TransferModels;
+﻿using infrastructure.datamodels;
+
+namespace api.TransferModels;
 
 public class ResponseDto
 {
