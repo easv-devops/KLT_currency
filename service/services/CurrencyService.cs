@@ -16,32 +16,14 @@ public class CurrencyService
     //Get method which calls the method in the infrastructure.
     public IEnumerable<CurrencyModel> GetCurrencyHistory(bool testing)
     {
-        try
-        {
             return _currencyRepository.GetCurrencyHistory(testing);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw new ValidationException("Error in getting currency history");
-        }
     } 
     //Create method which uses the converter method before sending the it to the infrastructure.
     public CurrencyModel PostCurrency(CurrencyModel currencyModel)
     {
-        try
-        {
             currencyModel.Result = ConvertCurrency(currencyModel.Value, currencyModel.Source, currencyModel.Target);
-            Console.WriteLine(currencyModel.Result);
-            
             
             return _currencyRepository.PostCurrency(currencyModel);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw new ValidationException("Error in posting the converted currency to history");
-        }
     }
     
     static decimal ConvertCurrency(decimal amount, string fromCurrency, string toCurrency)
