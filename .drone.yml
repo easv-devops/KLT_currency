@@ -69,6 +69,7 @@ steps:
     commands:
       - flyway migrate
         -url=jdbc:postgresql://144.91.64.53:5432/postgres
+        -username=postgres
         -password=secret
         -locations=filesystem:./db/data
     depends_on:
