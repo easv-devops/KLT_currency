@@ -1,4 +1,5 @@
 ﻿using api.controller;
+using infrastructure;
 using infrastructure.datamodels;
 using infrastructure.repositories;
 using service.services;
@@ -13,16 +14,16 @@ public class UnitTestCurrency
     [SetUp]
     public void Setup()
     {
-        _currencyController = new CurrencyController(new CurrencyService(new CurrencyRepository(null, true)));
+        _currencyController = new CurrencyController(new CurrencyService(new CurrencyRepository(null)));
     }
 
     [Test]
     public void GetCurrencyTest()
     {
+        var result = _currencyController.GetCurrencyHistory(true);
         
-        var result = _currencyController.GetCurrencyHistory();
         
-        Assert.AreEqual("Successfully got all prior conversions of currency", result.MessageToClient);
+        Assert.That(result.MessageToClient, Is.EqualTo("Successfully got all prior conversions of currency"));
     }
     
     [Test]
@@ -33,13 +34,19 @@ public class UnitTestCurrency
         
         var result = _currencyController.PostCurrency(currencyModel);
         
-        Assert.AreEqual("Successfully created new entry of currency conversion", result.MessageToClient);
+        Assert.That(result.MessageToClient, Is.EqualTo("Successfully created new entry of currency conversion"));
     }
-    
     [TearDown]
     public void TearDown()
     {
-        // Dispose of _currencyController after each test
         _currencyController.Dispose();
+    }
+
+    [Test]
+    public void UtilityTest()
+    {
+        var expectedResult = "Server=localhost:5432";
+        var result = Utilities.connectionStringDev.Substring(0, 21);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 }

@@ -18,12 +18,7 @@ if (builder.Environment.IsProduction())
 }
 
 builder.Services.AddSingleton<CurrencyService>();
-builder.Services.AddSingleton<CurrencyRepository>(provider =>
-{
-    var dataSource = provider.GetRequiredService<NpgsqlDataSource>();
-    var testing = false;
-    return new CurrencyRepository(dataSource, testing);
-});
+builder.Services.AddSingleton<CurrencyRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
