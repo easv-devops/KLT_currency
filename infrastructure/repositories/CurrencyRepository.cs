@@ -23,19 +23,13 @@ public class CurrencyRepository
     public IEnumerable<CurrencyModel> GetCurrencyHistory(bool testing)
     {
         var sql = @"SELECT * FROM history;";
-        if (testing)
-        {
-            foreach (var item in list)
-            {
-                yield return item;
-            }
-        } else {
+       if (testing)
+       {
+           return list;
+       } else {
             using (var conn = _dataSource.OpenConnection())
-            { 
-                foreach (var item in conn.Query<CurrencyModel>(sql))
-                {
-                    yield return item;
-                }
+            {
+                return conn.Query<CurrencyModel>(sql);
             }
         }
     }
