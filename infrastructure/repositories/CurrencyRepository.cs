@@ -6,12 +6,15 @@ namespace infrastructure.repositories;
 
 public class CurrencyRepository
 {
-    private readonly NpgsqlDataSource _dataSource;
+    private readonly NpgsqlDataSource? _dataSource;
     private readonly List<CurrencyModel> list;
 
-    public CurrencyRepository(NpgsqlDataSource dataSource)
+    public CurrencyRepository(NpgsqlDataSource? dataSource)
     {
-        _dataSource = dataSource;
+        if (dataSource != null)
+        {
+            _dataSource = dataSource;
+        }
         list = new List<CurrencyModel>();
         CurrencyModel model1 = new CurrencyModel { Date = DateTime.Today, Source = "EUR", Target = "USD", Value = 30, Result = 25, Testing = true};
         CurrencyModel model2 = new CurrencyModel { Date = DateTime.Today, Source = "USD", Target = "EUR", Value = 40, Result = 20, Testing = true};
