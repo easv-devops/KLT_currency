@@ -22,7 +22,8 @@ public class UnitTestCurrency
     {
         var result = _currencyController.GetCurrencyHistory(true);
         
-        Assert.AreEqual("Successfully got all prior conversions of currency", result.MessageToClient);
+        
+        Assert.That(result.MessageToClient, Is.EqualTo("Successfully got all prior conversions of currency"));
     }
     
     [Test]
@@ -33,7 +34,7 @@ public class UnitTestCurrency
         
         var result = _currencyController.PostCurrency(currencyModel);
         
-        Assert.AreEqual("Successfully created new entry of currency conversion", result.MessageToClient);
+        Assert.That(result.MessageToClient, Is.EqualTo("Successfully created new entry of currency conversion"));
     }
     [TearDown]
     public void TearDown()
@@ -46,6 +47,6 @@ public class UnitTestCurrency
     {
         var expectedResult = "Server=localhost:5432";
         var result = Utilities.connectionStringDev.Substring(0, 21);
-        Assert.AreEqual(expectedResult, result);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 }

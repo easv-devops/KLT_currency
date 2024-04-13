@@ -7,7 +7,7 @@ namespace infrastructure.repositories;
 public class CurrencyRepository
 {
     private readonly NpgsqlDataSource _dataSource;
-    private List<CurrencyModel> list;
+    private readonly List<CurrencyModel> list;
 
     public CurrencyRepository(NpgsqlDataSource dataSource)
     {
