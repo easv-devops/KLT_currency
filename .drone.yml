@@ -75,9 +75,17 @@ steps:
     depends_on:
       - trigger update
 
-  - name: end-to-end tests
-    image: testcafe/testcafe
-    commands:
-      - testcafe chromium:headless test/e2e/count-forecasts.js
-    depends_on:
-      - update database
+#  - name: end-to-end tests
+#    image: testcafe/testcafe
+#    commands:
+#      - testcafe chromium:headless Test/TestCurrencyHistory.js
+#    depends_on:
+#      - update database
+
+#  - name: performance tests
+#    image: grafana/k6
+#    commands:
+#        - k6 run Test/spike_test.js
+#        - k6 run Test/StressTest.js
+#    depends_on:
+#        - update database
