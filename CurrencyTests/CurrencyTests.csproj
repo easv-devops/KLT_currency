@@ -27,9 +27,4 @@
       <ProjectReference Include="..\api\api.csproj" />
     </ItemGroup>
 
-    <PropertyGroup>
-        <!-- Exclude the project from analysis -->
-        <SonarQubeExclude>true</SonarQubeExclude>
-    </PropertyGroup>
-
 </Project>
