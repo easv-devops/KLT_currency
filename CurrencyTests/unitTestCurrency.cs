@@ -1,4 +1,5 @@
 ﻿using api.controller;
+using infrastructure;
 using infrastructure.datamodels;
 using infrastructure.repositories;
 using service.services;
@@ -34,11 +35,17 @@ public class UnitTestCurrency
         
         Assert.AreEqual("Successfully created new entry of currency conversion", result.MessageToClient);
     }
-    
     [TearDown]
     public void TearDown()
     {
-        // Dispose of _currencyController after each test
         _currencyController.Dispose();
+    }
+
+    [Test]
+    public void UtilityTest()
+    {
+        var expectedResult = "Server=localhost:5432";
+        var result = Utilities.connectionStringDev.Substring(0, 21);
+        Assert.AreEqual(expectedResult, result);
     }
 }
