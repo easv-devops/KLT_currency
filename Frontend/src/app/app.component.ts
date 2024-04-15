@@ -10,56 +10,64 @@ import {firstValueFrom} from "rxjs";
   selector: 'app-root',
   template: `
 
-  <ion-content>
 
+
+    <ion-content>
     <ion-header>Currency converter </ion-header>
 
 
+
+
+            <ion-row>
+              <ion-col>
+
+          <select id="select1" placeholder="Source" [(ngModel)]="source" >
+
+
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="JPY">JPY</option>
+              <option value="AUD">AUD</option>
+
+
+          </select>
+              </ion-col>
+
+              <ion-col>
+            <select id="select2" placeholder="Source" [(ngModel)]="target" >
+
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="AUD">AUD</option>
+
+
+              </select>
+
+              </ion-col>
+
+            </ion-row>
+
+
+
+      <input id="input1" [(ngModel)]="value1">
+
+        <button id="button1" (click)="convert()">Convert</button>
+
+
+
+
+
+        <h1 id="h1-1">Convertion gives: {{convertion}}</h1>
+
     <ion-row>
-
-
-        <ion-item>
-          <ion-select placeholder="Source" [(ngModel)]="source" >
-            <div slot="label">
-              <ion-text >Name</ion-text>
-            </div>
-
-            <ion-select-option *ngFor="let source of currencies" [value]="source">{{ source }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-
-
-
-      <ion-item>
-        <ion-select placeholder="Source" [(ngModel)]="target" >
-          <div slot="label">
-            <ion-text >Name</ion-text>
-          </div>
-          <ion-select-option *ngFor="let target of currencies" [value]="target">{{ target }}</ion-select-option>
-        </ion-select>
-
-      </ion-item>
-
-
-    </ion-row>
-    <ion-row>
-
-      <ion-item>
-      <ion-input [(ngModel)]="value1">Amount</ion-input>
-      </ion-item>
-        <ion-button (click)="convert()">Convert</ion-button>
-
-
-    </ion-row>
-    <ion-row>
-
-        <h1>Convertion gives: {{convertion}}</h1>
-
-
-    </ion-row>
 
     <h1>History</h1>
-    <ion-row >
+
+    </ion-row>
+      <ion-row>
       <ion-col style=" border: 2px solid #000;">
         <h1>Date</h1>
       </ion-col>
@@ -113,9 +121,8 @@ import {firstValueFrom} from "rxjs";
     </div>
 
 
+    </ion-content>
 
-
-  </ion-content>
 
 
 
