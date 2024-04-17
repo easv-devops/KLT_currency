@@ -75,12 +75,12 @@ steps:
     depends_on:
       - trigger update
 
-#  - name: end-to-end tests
-#    image: testcafe/testcafe
-#    commands:
-#      - testcafe chromium:headless Test/TestCurrencyHistory.js
-#    depends_on:
-#      - update database
+  - name: end-to-end tests
+    image: testcafe/testcafe
+    commands:
+      - testcafe chromium:headless Test/TestCafe.js
+    depends_on:
+      - update database
 
 #  - name: performance tests
 #    image: grafana/k6
