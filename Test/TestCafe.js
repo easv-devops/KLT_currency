@@ -44,6 +44,6 @@ test('Afprøvning af testCafe', async  t =>
 
 //kør testen
 //testcafe chrome TestCafe1.js --live
-//Ctrl+S stopper testen
+//Ctrl+S stopper testenKk
 //Ctrl+r genstarter testen
 

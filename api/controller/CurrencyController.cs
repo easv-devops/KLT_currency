@@ -1,5 +1,6 @@
 ﻿
 using api.TransferModels;
+using FeatureHubSDK;
 using infrastructure.datamodels;
 using Microsoft.AspNetCore.Mvc;
 using service.services;
@@ -21,7 +22,12 @@ public class CurrencyController : Controller
     [HttpGet]
     [Route("/currency/get")]
     public ResponseDto GetCurrencyHistory(bool testing)
+    
+ 
     {
+        
+        
+        
         return new ResponseDto()
         {
             MessageToClient = "Successfully got all prior conversions of currency",

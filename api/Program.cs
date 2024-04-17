@@ -1,9 +1,22 @@
+using FeatureHubSDK;
 using infrastructure;
 using infrastructure.repositories;
 using Npgsql;
 using service.services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// FeatureLogging.DebugLogger +=(sender,s)=>Console.WriteLine("DEBUG: "+s);
+// FeatureLogging.TraceLogger +=(sender,s)=>Console.WriteLine("TRACE: "+s);
+// FeatureLogging.InfoLogger +=(sender,s)=>Console.WriteLine("INFO: "+s);
+// FeatureLogging.ErrorLogger +=(sender,s)=>Console.WriteLine("ERROR: "+s);
+//
+// var config = new EdgeFeatureHubConfig("http://featurehub:8085", "7dd9ab45-d431-4783-9de9-d6449144a854/E32Aas14DL1KBFCGQwMm6EPpddXpjONwZQSHYrmo");
+// var fh = await config.NewContext().Build();
+//         
+// Console.WriteLine(fh["HistoryOn"].IsEnabled);
+
+
 
 
 if (builder.Environment.IsDevelopment())
