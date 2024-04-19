@@ -53,3 +53,17 @@ services:
       - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - 8080:8080
+    
+  
+  seq:
+    image: datalust/seq
+    ports:
+      - "5341:5341"
+      - "5342:80"
+    volumes:
+      - rps_seq_data1:/data
+    environment:
+      - ACCEPT_EULA=Y
+
+  volumes:
+    rps_seq_data1:

@@ -2,6 +2,7 @@
 using api.TransferModels;
 using infrastructure.datamodels;
 using Microsoft.AspNetCore.Mvc;
+using Monitoring;
 using service.services;
 
 namespace api.controller;
@@ -22,6 +23,8 @@ public class CurrencyController : Controller
     [Route("/currency/get")]
     public ResponseDto GetCurrencyHistory(bool testing)
     {
+        MonitorService.log.Debug("Entered Method1");
+        
         return new ResponseDto()
         {
             MessageToClient = "Successfully got all prior conversions of currency",
