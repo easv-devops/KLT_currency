@@ -23,7 +23,7 @@ public class CurrencyController : Controller
     [Route("/currency/get")]
     public ResponseDto GetCurrencyHistory(bool testing)
     {
-        MonitorService.log.Debug("Entered Method1");
+        MonitorService.log.Debug("History");
         
         return new ResponseDto()
         {
@@ -37,6 +37,7 @@ public class CurrencyController : Controller
     [Route("/currency/post")]
     public ResponseDto PostCurrency([FromBody] CurrencyModel currencyModel)
     {
+        MonitorService.log.Debug("New currency");
         return new ResponseDto()
         {
             MessageToClient = "Successfully created new entry of currency conversion",
