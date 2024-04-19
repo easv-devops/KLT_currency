@@ -18,7 +18,7 @@ export const options = {
 
 
 export default () => {
-    http.get('http://localhost:5100/currency/get?testing=true');
+    http.get('http://144.91.64.53:5100/currency/get?testing=true');
     sleep(1);
 }
 

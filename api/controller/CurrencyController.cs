@@ -25,13 +25,11 @@ public class CurrencyController : Controller
     {
         MonitorService.log.Debug("History");
         
-        var model = _currencyService.GetCurrencyHistory(testing)
-        Console.WriteLine(model);
-            
+      
         return new ResponseDto()
         {
             MessageToClient = "Successfully got all prior conversions of currency",
-         //   ResponseData = _currencyService.GetCurrencyHistory(testing)
+            ResponseData = _currencyService.GetCurrencyHistory(testing)
         };
     }
 
