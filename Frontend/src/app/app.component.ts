@@ -61,6 +61,7 @@ import {firstValueFrom} from "rxjs";
 
 
         <h1 id="h1-1">Convertion gives: {{convertion}}</h1>
+        <p>Test linje</p>
 
     <ion-row>
 
