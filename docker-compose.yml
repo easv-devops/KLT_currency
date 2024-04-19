@@ -65,5 +65,5 @@ services:
     environment:
       - ACCEPT_EULA=Y
 
-  volumes:
+volumes:
     rps_seq_data1:
