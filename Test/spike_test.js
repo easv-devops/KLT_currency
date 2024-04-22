@@ -11,9 +11,14 @@ export const options = {
         {duration: '3m', target: 50},
         {duration: '10s', target: 100},
         {duration: '3m', target: 100},
-        {duration: '10m', target: 0},
+        {duration: '5m', target: 0},
 
-    ]
+    ],
+    
+    thresholds: {
+        // You can define thresholds for your test here
+        http_req_duration: ['p(95)<500'], // 95% of requests should be below 500ms
+    },
 };
 
 
